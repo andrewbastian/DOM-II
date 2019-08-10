@@ -2,13 +2,13 @@
 // * [ ] Using your [index.js file](js/index.js), create 10 [unique event listeners](https://developer.mozilla.org/en-US/docs/Web/Events). using your creativity to make the Fun Bus site more interactive.  Here are some unique events you could try to use:
 // 	* [√] `mouseover`
 // 	* [√] `keydown`
-// 	* [ ] `wheel`
+// 	* [√] `wheel`
 // 	* [ ] `drag / drop`
 // 	* [√] `load`
 // 	* [ ] `focus`
 // 	* [ ] `resize`
 // 	* [√] `scroll`
-// 	* [ ] `select`
+// 	* [√] `select`
 // 	* [√] `click`
 
 
@@ -25,8 +25,12 @@ window.addEventListener('load', (event) => {
 });
 // BIG LETTER>little letter>BIG LETTER>little letter
 let navItems = document.querySelectorAll('a');
+navItems.forEach((as, i)=>{
+  as.addEventListener("click", (event)=>{
+    event.preventDefault();
+  } )
+})
 navItems.forEach((aTags, i) => {
-
 aTags.addEventListener('mouseover', (event)=>{
     aTags.animate({
       fontSize: ["20px", "40px", "30px","20px"],
@@ -120,6 +124,53 @@ btn3.addEventListener('click', animateBtn);
 //
 
 
+
+//select h2s
+
+let h2Input1 = document.createElement("input");
+h2Input1.value = "Welcome To Fun Bus!";
+h2Input1.style.fontFamily = "'Indie Flower', cursive"
+h2Input1.style.fontSize = "3.2rem"
+h2Input1.style.marginBlockStart = "0.83em";
+h2Input1.style.marginBlockEnd = "0.83em";
+h2Input1.style.marginInlineStart = "0px";
+h2Input1.style.marginInlineEnd = "0px";
+h2Input1.style.display = "block";
+h2Input1.style.border = "none";
+h2Input1.addEventListener('select',(event)=>{
+    h2Input1.animate({
+      color: ["red", "orange", "yellow","orange","red"],
+    }, 3000); });
+let h2Input2 = document.createElement("input");
+let h2Input3 = document.createElement("input");
+let h2Input4 = document.createElement("input");
+
+let pS = document.querySelectorAll("p")
+pS[0].prepend(h2Input1);
+let h2s = document.querySelectorAll('h2');
+h2s[0].style.display = "none";
+//h4s[1].textContent = siteContent['main-content']["about-h4"];
+//h4s[2].textContent = siteContent['main-content']["services-h4"];
+//h4s[3].textContent = siteContent['main-content']["product-h4"];
+//
+//WHEEL
+//WHEEL Func
+function blowUpWheel(event){
+  event.preventDefault();
+
+    scale += event.deltaY * -0.01;
+
+    // Restrict scale
+    scale = Math.min(Math.max(.125, scale), 4);
+
+    // Apply scale transform
+    wheelImg.style.transform = `scale(${scale})`;}
+let scale = 1;
+let headImg = document.querySelector("img").setAttribute("id", "head-img");
+let wheelImg = document.querySelector("#head-img");
+wheelImg.addEventListener("wheel", blowUpWheel);
+
+//
 //video
 
 // let footer = document.querySelector("footer")
@@ -182,36 +233,3 @@ btn3.addEventListener('click', animateBtn);
 //   </div>
 // video.prepend(player);
 // footer.prepend(player);
-
-
-//WHEEL EVENT
-function blowUpWheel(event){
-  event.stopPropagation()
-  event.currentTarget.backgroundColor = "red";}
-//select h2s
-
-let h2Input1 = document.createElement("input");
-h2Input1.value = "Welcome To Fun Bus!";
-h2Input1.style.fontFamily = "'Indie Flower', cursive"
-h2Input1.style.fontSize = "3.2rem"
-h2Input1.style.marginBlockStart = "0.83em";
-h2Input1.style.marginBlockEnd = "0.83em";
-h2Input1.style.marginInlineStart = "0px";
-h2Input1.style.marginInlineEnd = "0px";
-h2Input1.style.display = "block";
-h2Input1.style.border = "none";
-h2Input1.addEventListener('select',(event)=>{
-    h2Input1.animate({
-      color: ["red", "orange", "yellow","orange","red"],
-    }, 3000); });
-let h2Input2 = document.createElement("input");
-let h2Input3 = document.createElement("input");
-let h2Input4 = document.createElement("input");
-
-let pS = document.querySelectorAll("p")
-pS[0].prepend(h2Input1);
-let h2s = document.querySelectorAll('h2');
-h2s[0].style.display = "none";
-//h4s[1].textContent = siteContent['main-content']["about-h4"];
-//h4s[2].textContent = siteContent['main-content']["services-h4"];
-//h4s[3].textContent = siteContent['main-content']["product-h4"];
