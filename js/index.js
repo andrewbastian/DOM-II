@@ -23,6 +23,18 @@ window.addEventListener('load', (event) => {
     easing: [ 'ease-in', 'ease-out' ],
   }, 2000);
 });
+//scroll nav
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+      document.getElementById("navbar").style.padding = "25px 10px";
+      document.getElementById("logo").style.fontSize = "25px";
+    } else {
+      document.getElementById("navbar").style.padding = "80px 10px";
+      document.getElementById("logo").style.fontSize = "40px";
+    }
+  }
 // BIG LETTER>little letter>BIG LETTER>little letter
 let navItems = document.querySelectorAll('a');
 navItems.forEach((as, i)=>{
@@ -52,19 +64,6 @@ aTags.addEventListener('mouseover', (event)=>{
   let logo = document.querySelector(".logo-heading");
   logo.setAttribute("id","logo");
   logo.style.textShadow = "0px 11px 3px rgba(206,151,197,0.87)";
-
-  window.onscroll = function() {scrollFunction()};
-
-  function scrollFunction() {
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-      document.getElementById("navbar").style.padding = "25px 10px";
-      document.getElementById("logo").style.fontSize = "25px";
-    } else {
-      document.getElementById("navbar").style.padding = "80px 10px";
-      document.getElementById("logo").style.fontSize = "40px";
-    }
-  }
-
 
   // Keydown horn
 
@@ -99,7 +98,7 @@ function playSound(e) {
 window.addEventListener('keydown', playSound);
 
 
-//
+//BTN FUNC
 function animateBtn(event) {
 
   event.stopPropagation()
@@ -110,7 +109,7 @@ function animateBtn(event) {
   easing: [ 'ease-in', 'ease-out' ],
 }, 2000);
 }
-// btn
+// btns
 let btn= document.querySelectorAll('.btn')
 btn[0].setAttribute("id", "btn-1");
 btn[1].setAttribute("id", "btn-2");
@@ -153,6 +152,9 @@ h2s[0].style.display = "none";
 //h4s[2].textContent = siteContent['main-content']["services-h4"];
 //h4s[3].textContent = siteContent['main-content']["product-h4"];
 //
+
+
+
 //WHEEL
 //WHEEL Func
 function blowUpWheel(event){
@@ -161,19 +163,55 @@ function blowUpWheel(event){
     scale += event.deltaY * -0.01;
 
     // Restrict scale
-    scale = Math.min(Math.max(.125, scale), 4);
+    scale = Math.min(Math.max(.01, scale), 2);
 
     // Apply scale transform
-    wheelImg.style.transform = `scale(${scale})`;}
+    wheelImg.style.transform = `scale(${scale})`;
+  }
 let scale = 1;
 let headImg = document.querySelector("img").setAttribute("id", "head-img");
 let wheelImg = document.querySelector("#head-img");
 wheelImg.addEventListener("wheel", blowUpWheel);
 
+//focus
+let footer = document.querySelector("footer")
+// var x = document.createElement("FORM");
+// function myFunction() {
+//   var x = document.createElement("FORM");
+//   x.setAttribute("id", "myForm");
+//   body.appendChild(x);
 //
+//   var y = document.createElement("INPUT");
+//   // y.stopPropagation();
+//   y.setAttribute("type", "text");
+//   y.setAttribute("value", "Donald");
+//   document.getElementById("myForm").appendChild(y);
+// }
+let form = document.createElement("form");
+form.setAttribute("name", "fname");
+form.setAttribute("id", "fname");
+let formlabel = document.createElement("label");
+formlabel.setAttribute("for", "fname");
+formlabel.style.textContent = "Tell Us Your Story"
+let formInput = document.createElement("input");
+formInput.setAttribute("type", "text");
+formInput.style.width = "100%";
+formInput.style.fontSize = "25px";
+// form.setAttribute("autocomplete", "on");
+body.append("form");
+form.append('formlabel');
+formlabel.append("formInput")
+
+//
+
+
+
+
+
+
 //video
 
-// let footer = document.querySelector("footer")
+
 // //<div class="player">
 // footer.insertBefore(".player")
 // let player = document.createElement("div")
@@ -233,3 +271,5 @@ wheelImg.addEventListener("wheel", blowUpWheel);
 //   </div>
 // video.prepend(player);
 // footer.prepend(player);
+//
+//
